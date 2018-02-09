@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/spausek/hangman-constructors#readme",
   "dependencies": {
-    "inquirer": "^5.1.0"
+    "inquirer": "^5.1.0",
+    "prompt": "^1.0.0"
   }
 }

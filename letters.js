@@ -1,3 +1,5 @@
+var words = ['Jamaica', 'Australia', 'Japan', 'Italy', 'Germany', 'Austria', 'China', 'Mongolia', 'Egypt', 'Israel']
+
 const Letter = function(letter){
 	this.letter = letter
 	this.display = false;
@@ -17,5 +19,8 @@ const Letter = function(letter){
 		}
 	};
 };
-var foo = new Letter("apple")
+var foo = new Letter("apple pie")
 console.log(foo);
+
+exports.Letter = Letter;
+exports.words = words;
