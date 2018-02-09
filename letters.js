@@ -1,20 +1,21 @@
+const Letter = function(letter){
+	this.letter = letter
+	this.display = false;
+	this.displayLetter = function(){
+		if (this.display){
+			return this.letter;
+		}
 
-module.exports = Letters;
+		else if (this.letter === ' '){
+			this.display = true;
+			return this.letter;
+		}
 
-const Letters = function(word, guess){
-	this.word = word;
-	this.correctGuess = guess;
-	this.showWord = ' ';
-	this.displayWord = function(){
-		var emptyWord = '';
-	 	if(this.correctGuess === undefined){
-	 		for(var i = 0; i < this.word.length; i++){
-	 			emptyWord += '_';
-	 		}
-	 	}
-
-	}
-
-	
-
-}
+		else {
+			  return '_';
+              
+		}
+	};
+};
+var foo = new Letter("apple")
+console.log(foo);
