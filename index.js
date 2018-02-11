@@ -12,10 +12,11 @@ hangMan = {
 	wordArray: Letter.words,
 	startGame: function(word){
 		this.resetGuess();
-		this.selectedWord = new Word(this.wordArray[Math.floor(Math.random()*this.wordArray.length)]);
-		this.selectedWord.displayLetters();
+		this.selectedWord = new Word.Word(this.wordArray[Math.floor(Math.random()*this.wordArray.length)]);
+		this.selectedWord.getLetters();
 		console.log('Welcome to Around The World Hangman!');
-		console.log(this.selectedWord.hangManWordDisplay() + '\n');
+		console.log(this.selectedWord.wordDisplay() + '\n');
+		this.promptUser();
 
 	},
 
@@ -24,15 +25,16 @@ hangMan = {
 	},
 
 	promptUser: function(){
-		prompt.get(['guessLetter'], function(err, result){
+		prompt.get(['guessALetter'], function(err, result){
 			console.log('');
-			console.log('You guessed this letter: ' + result.guessLetter);
+			console.log('You guessed this letter: ' + result.guessALetter);
 
-			var userGuess = this.selectedWord.checkLetter(result.guessLetter);
+			var userGuess = this.selectedWord.checkLetter(result.guessALetter);
+			
 
 			if (userGuess === 0){
-				if (this.lettersGuessed.indexOf(result.guessLetter) < 0){
-					this.guessLetter.push(result.guessLetter);
+				if (this.lettersGuessed.indexOf(result.guessALetter) < 0){
+					this.lettersGuessed.push(result.guessALetter);
 					this.guesses --;
 					console.log('Wrong Letter!');
 					}
