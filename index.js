@@ -25,27 +25,29 @@ hangMan = {
 	},
 
 	promptUser: function(){
+		let self = this;
 		prompt.get(['guessALetter'], function(err, result){
 			console.log('');
 			console.log('You guessed this letter: ' + result.guessALetter);
 
-			var userGuess = this.selectedWord.checkLetter(result.guessALetter);
+			var userGuess = self.selectedWord.checkLetter();
 			
 
 			if (userGuess === 0){
-				if (this.lettersGuessed.indexOf(result.guessALetter) < 0){
-					this.lettersGuessed.push(result.guessALetter);
-					this.guesses --;
+				if (self.lettersGuessed.indexOf(result.guessALetter) < 0){
+					self.lettersGuessed.push(result.guessALetter);
+					self.guesses --;
 					console.log('Wrong Letter!');
 					}
 
-				else{
+				else {
+					//couldn't get guessed letter condition to work
 					console.log('Correct!');
 				}
 
 				
-					if (this.selectedWord.findTheWord()) {
-						console.log('You got it! The country was ' + this.selectedWord);
+					if (self.selectedWord.findTheWord()) {
+						console.log('You got it! The country was ' + self.selectedWord);
 						console.log('Nice!')
 
 						return;
@@ -53,19 +55,19 @@ hangMan = {
 				
 			}
 
-			 console.log('Guesses remaining: ', this.guesses);
-		    console.log(this.selectedWord.wordDisplay());
+			 console.log('Guesses remaining: ', self.guesses);
+		    console.log(self.selectedWord.wordDisplay());
 				console.log("");
-		    console.log('Letters already guessed: ' + this.lettersGuessed);
+		    console.log('Letters already guessed: ' + self.lettersGuessed);
 
 
-		    if ((this.guesses > 0) && (this.selectedWord.found === false)){
-		    	this.promptUser();
-		    } else if(this.guesses === 0){
-			    	console.log('You lost! The country was', this.selectedWord.word);
-			    	console.log('Try agina!');
+		    if ((self.guesses > 0) && (self.selectedWord.found === false)){
+		    	self.promptUser();
+		    } else if(self.guesses === 0){
+			    	console.log('You lost! The country was', self.selectedWord.word);
+			    	console.log('Try again!');
 			  } else{
-			    	console.log(this.selectedWord.wordDisplay());
+			    	console.log(self.selectedWord.wordDisplay());
 			  }
 		});
 	}
